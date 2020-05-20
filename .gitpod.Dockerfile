@@ -9,7 +9,6 @@ RUN apt-get install -y libmicrohttpd-dev libjansson-dev libnice-dev &&  \
     libopus-dev libogg-dev pkg-config gengetopt libtool automake &&  \
     apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
-
 # Setup  for user gitpod
 USER gitpod
 # Install custom tools, runtime, etc. using apt-get
