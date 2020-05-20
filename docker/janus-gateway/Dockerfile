@@ -38,13 +38,14 @@ RUN apt-get install -y libmicrohttpd-dev \
     libopus-dev \
     libogg-dev \
     pkg-config \
+    libconfig-dev \
     gengetopt \
-    automake \
-    && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
+    libtool \
+    automake
+#    && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
-
-#COPY janus-gateway /janus-gateway
-#WORKDIR /janus-gateway
+COPY janus-gateway /janus-gateway
+WORKDIR /janus-gateway
 #RUN ls && pwd
 
 #CMD ["node","server.js"]
