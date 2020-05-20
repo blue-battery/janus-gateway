@@ -28,18 +28,18 @@ RUN set -x \
     && echo "alias apt-get='apt-fast'" >> ~/.bashrc \
     && echo "alias aptitude='apt-fast'" >> ~/.bashrc
 
-RUN apt install -y libmicrohttpd-dev \
-    && libjansson-dev \
-    && libnice-dev \
-    && libssl-dev \
-    && libsrtp-dev \
-    && libsofia-sip-ua-dev \
-    && libglib2.0-dev \
-    && libopus-dev \
-    && libogg-dev \
-    && pkg-config \
-    && gengetopt \
-    && automake \
+RUN apt-get install -y libmicrohttpd-dev \
+    libjansson-dev \
+    libnice-dev \
+    libssl-dev \
+    libsrtp-dev \
+    libsofia-sip-ua-dev \
+    libglib2.0-dev \
+    libopus-dev \
+    libogg-dev \
+    pkg-config \
+    gengetopt \
+    automake \
     && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
 
