@@ -2,9 +2,11 @@ FROM gitpod/workspace-full
 
 # Install postgres
 USER root
-RUN sudo apt-get update -y
+RUN apt-get update \
+    && apt-get install apt-fast
 
-RUN aptitude install -y libmicrohttpd-dev libjansson-dev libnice-dev &&  \
+
+RUN apt-get install -y libmicrohttpd-dev libjansson-dev libnice-dev &&  \
     libssl-dev libsrtp-dev libsofia-sip-ua-dev libglib2.0-dev &&  \
     libopus-dev libogg-dev pkg-config gengetopt libtool automake &&  \
     apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
