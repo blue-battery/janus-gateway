@@ -1,13 +1,13 @@
 version: '3'
 services:
-  peerjs:
+  janus-gateway:
     container_name: janus-gateway
     tty: true
     build:
       context: ./
       dockerfile: ./docker/janus-gateway/Dockerfile
-    ports:
-      - "8080:8080"
+#    ports:
+#      - "8080:8080"
     volumes:
       - ./janus-gateway:/janus-gateway/
     working_dir: /janus-gateway/
