@@ -3,7 +3,11 @@ FROM gitpod/workspace-full
 # Install postgres
 USER root
 RUN apt-get update \
-    && apt-get install apt-fast
+    && apt-get install -y software-properties-common \
+    && add-apt-repository ppa:apt-fast/stable \
+    && apt-get install -y apt-fast \
+    && echo "alias apt-get='apt-fast'" >> ~/.bashrc \
+    && echo "alias aptitude='apt-fast'" >> ~/.bashrc
 
 
 RUN apt-get install -y libmicrohttpd-dev libjansson-dev libnice-dev &&  \
