@@ -1,5 +1,7 @@
 FROM gitpod/workspace-full
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Install postgres
 USER root
 RUN apt-get update \
