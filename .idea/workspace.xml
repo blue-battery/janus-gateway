@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="340af998-bd0d-49a3-8d49-fba2e73793d9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/janus-gateway/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/janus-gateway/.travis.yml" afterDir="false" />
+    <list default="true" id="340af998-bd0d-49a3-8d49-fba2e73793d9" name="Default Changelist" comment="from workspace">
+      <change beforePath="$PROJECT_DIR$/.gitpod.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/.gitpod.Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +33,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/janus-gateway" />
+    </key>
+  </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
@@ -55,7 +61,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589938393626</updated>
-      <workItem from="1589938397199" duration="3428000" />
+      <workItem from="1589938397199" duration="3773000" />
     </task>
     <task id="LOCAL-00001" summary="from workspace">
       <created>1589941927963</created>
@@ -78,7 +84,28 @@
       <option name="project" value="LOCAL" />
       <updated>1589943845641</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="from workspace">
+      <created>1589944054295</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589944054295</updated>
+    </task>
+    <task id="LOCAL-00005" summary="from workspace">
+      <created>1589944102095</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1589944102095</updated>
+    </task>
+    <task id="LOCAL-00006" summary="from workspace">
+      <created>1589944134902</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1589944134902</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,18 +116,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="from workspace" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1064" y="250" key="CommitChangelistDialog2" timestamp="1589944054200">
+    <state x="1064" y="250" key="CommitChangelistDialog2" timestamp="1589944169070">
       <screen x="0" y="23" width="2560" height="1363" />
     </state>
-    <state x="1064" y="250" key="CommitChangelistDialog2/0.23.2560.1363@0.23.2560.1363" timestamp="1589944054200" />
+    <state x="1064" y="250" key="CommitChangelistDialog2/0.23.2560.1363@0.23.2560.1363" timestamp="1589944169070" />
     <state x="1029" y="417" key="MultipleFileMergeDialog" timestamp="1589943459934">
       <screen x="0" y="23" width="2560" height="1363" />
     </state>
     <state x="1029" y="417" key="MultipleFileMergeDialog/0.23.2560.1363@0.23.2560.1363" timestamp="1589943459934" />
-    <state x="1162" y="388" key="Vcs.Push.Dialog.v2" timestamp="1589943851402">
+    <state x="1162" y="388" key="Vcs.Push.Dialog.v2" timestamp="1589944172309">
       <screen x="0" y="23" width="2560" height="1363" />
     </state>
-    <state x="1162" y="388" key="Vcs.Push.Dialog.v2/0.23.2560.1363@0.23.2560.1363" timestamp="1589943851402" />
+    <state x="1162" y="388" key="Vcs.Push.Dialog.v2/0.23.2560.1363@0.23.2560.1363" timestamp="1589944172309" />
     <state x="1101" y="618" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589943453519">
       <screen x="0" y="23" width="2560" height="1363" />
     </state>

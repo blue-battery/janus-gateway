@@ -2,15 +2,13 @@ FROM gitpod/workspace-full
 
 # Install postgres
 USER root
-RUN apt-get update && apt-get install -y \
-        postgresql \
-        postgresql-contrib \
-    && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
+RUN apt-get update
 
+RUN apt-get install -y libmicrohttpd-dev libjansson-dev libnice-dev &&  \
+    libssl-dev libsrtp-dev libsofia-sip-ua-dev libglib2.0-dev &&  \
+    libopus-dev libogg-dev pkg-config gengetopt libtool automake &&  \
+    apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
-RUN sudo apt-get install -y libmicrohttpd-dev libjansson-dev libnice-dev \
-libssl-dev libsrtp-dev libsofia-sip-ua-dev libglib2.0-dev \
-libopus-dev libogg-dev pkg-config gengetopt libtool automake
 
 # Setup  for user gitpod
 USER gitpod
