@@ -1,7 +1,7 @@
 version: '3'
 services:
   janus-gateway:
-    container_name: janus
+    container_name: janus-me
     tty: true
     image: janus-gateway
     build:
