@@ -137,7 +137,8 @@ RUN sh autogen.sh &&  \
     --enable-all-handlers && \
     make && make install && make configs && ldconfig
 
-COPY nginx.conf /usr/local/nginx/nginx.conf
+#COPY nginx.conf /usr/local/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 
 ENV NVM_VERSION v0.35.3
