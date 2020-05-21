@@ -85,39 +85,39 @@ RUN apt-fast -y update && apt-fast install -y --no-install-recommends \
 #        curl \
 #        pkg-config \
 #    && rm -rf /var/lib/apt/lists/*
-#ENV GOLANG_VERSION 1.7.5
-#ENV GOLANG_DOWNLOAD_URL https://golang.org/dl/go$GOLANG_VERSION.linux-amd64.tar.gz
-#ENV GOLANG_DOWNLOAD_SHA256 2e4dd6c44f0693bef4e7b46cc701513d74c3cc44f2419bf519d7868b12931ac3
-#RUN curl -fsSL "$GOLANG_DOWNLOAD_URL" -o golang.tar.gz \
-#    && echo "$GOLANG_DOWNLOAD_SHA256  golang.tar.gz" | sha256sum -c - \
-#    && tar -C /usr/local -xzf golang.tar.gz \
-#    && rm golang.tar.gz
-#
-#ENV GOPATH /go
-#ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
-#RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
-## https://boringssl.googlesource.com/boringssl/+/chromium-stable
-#RUN git clone https://boringssl.googlesource.com/boringssl && \
-#    cd boringssl && \
-#    git reset --hard c7db3232c397aa3feb1d474d63a1c4dd674b6349 && \
-#    sed -i s/" -Werror"//g CMakeLists.txt && \
-#    mkdir -p build  && \
-#    cd build  && \
-#    cmake -DCMAKE_CXX_FLAGS="-lrt" ..  && \
-#    make  && \
-#    cd ..  && \
-#    sudo mkdir -p /opt/boringssl  && \
-#    sudo cp -R include /opt/boringssl/  && \
-#    sudo mkdir -p /opt/boringssl/lib  && \
-#    sudo cp build/ssl/libssl.a /opt/boringssl/lib/  && \
-#    sudo cp build/crypto/libcrypto.a /opt/boringssl/lib/
+ENV GOLANG_VERSION 1.7.5
+ENV GOLANG_DOWNLOAD_URL https://golang.org/dl/go$GOLANG_VERSION.linux-amd64.tar.gz
+ENV GOLANG_DOWNLOAD_SHA256 2e4dd6c44f0693bef4e7b46cc701513d74c3cc44f2419bf519d7868b12931ac3
+RUN curl -fsSL "$GOLANG_DOWNLOAD_URL" -o golang.tar.gz \
+    && echo "$GOLANG_DOWNLOAD_SHA256  golang.tar.gz" | sha256sum -c - \
+    && tar -C /usr/local -xzf golang.tar.gz \
+    && rm golang.tar.gz
+
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+# https://boringssl.googlesource.com/boringssl/+/chromium-stable
+RUN git clone https://boringssl.googlesource.com/boringssl && \
+    cd boringssl && \
+    git reset --hard c7db3232c397aa3feb1d474d63a1c4dd674b6349 && \
+    sed -i s/" -Werror"//g CMakeLists.txt && \
+    mkdir -p build  && \
+    cd build  && \
+    cmake -DCMAKE_CXX_FLAGS="-lrt" ..  && \
+    make  && \
+    cd ..  && \
+    sudo mkdir -p /opt/boringssl  && \
+    sudo cp -R include /opt/boringssl/  && \
+    sudo mkdir -p /opt/boringssl/lib  && \
+    sudo cp build/ssl/libssl.a /opt/boringssl/lib/  && \
+    sudo cp build/crypto/libcrypto.a /opt/boringssl/lib/
 
 COPY janus-gateway /janus-gateway
 WORKDIR /janus-gateway
 RUN sh autogen.sh &&  \
     PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure \
     --enable-post-processing \
-    --enable-boringssl \
+    --disable-boringssl \
     --enable-data-channels \
     --disable-rabbitmq \
     --disable-mqtt \
