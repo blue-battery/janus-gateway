@@ -26,14 +26,16 @@ RUN set -x \
     #35.6Mb to 154Mb
     && apt-get install -y software-properties-common \
     && add-apt-repository ppa:apt-fast/stable \
-    && apt-get install -y apt-fast \
+    && apt-get install -y apt-utils apt-fast \
 #   12.4 MB
 #    && aptitude update \
 #    && aptitude safe-upgrade \
     && echo "alias apt-get='apt-fast'" >> ~/.bashrc \
     && echo "alias aptitude='apt-fast'" >> ~/.bashrc
 #project rely
-RUN apt-fast install -y libmicrohttpd-dev \
+#RUN rm -rf /var/lib/apt/lists/*
+RUN set -x && \
+    apt-fast -y update && apt-fast install -y libmicrohttpd-dev \
     libjansson-dev \
     libnice-dev \
     libssl-dev \
@@ -42,12 +44,23 @@ RUN apt-fast install -y libmicrohttpd-dev \
     libglib2.0-dev \
     libopus-dev \
     libogg-dev \
+    libini-config-dev \
+    libcollection-dev \
+    libconfig-dev \
     pkg-config \
     gengetopt \
     libtool \
-    automake
+    automake \
+    build-essential \
+    subversion \
+    git \
+    cmake \
+    unzip \
+    zip \
+    lsof wget vim sudo rsync cron mysql-client openssh-server supervisor locate gstreamer1.0-tools mplayer valgrind certbot python3-certbot-apache dnsutils
 
-RUN apt-fast install -y vim cmake openssl libwebsockets-dev libconfig-dev libavutil-dev libavcodec-dev libavformat-dev
+
+RUN apt-fast install -y  openssl libwebsockets-dev libconfig-dev libavutil-dev libavcodec-dev libavformat-dev
 #    && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
 RUN apt-fast install -y locales curl python3-distutils libusrsctp-dev nodejs npm nginx \
@@ -60,10 +73,31 @@ ENV LANG en_US.utf8
 ADD requirements.txt ./
 RUN pip install -r requirements.txt
 
-#RUN apt-fast install -y git
+
+# Boringssl build section
+# If you want to use the openssl instead of boringssl
+# RUN apt-get update -y && apt-get install -y libssl-dev
+RUN apt-fast -y update && apt-fast install -y --no-install-recommends \
+        g++ \
+        gcc \
+        libc6-dev \
+        make
+#        curl \
+#        pkg-config \
+#    && rm -rf /var/lib/apt/lists/*
+#ENV GOLANG_VERSION 1.7.5
+#ENV GOLANG_DOWNLOAD_URL https://golang.org/dl/go$GOLANG_VERSION.linux-amd64.tar.gz
+#ENV GOLANG_DOWNLOAD_SHA256 2e4dd6c44f0693bef4e7b46cc701513d74c3cc44f2419bf519d7868b12931ac3
+#RUN curl -fsSL "$GOLANG_DOWNLOAD_URL" -o golang.tar.gz \
+#    && echo "$GOLANG_DOWNLOAD_SHA256  golang.tar.gz" | sha256sum -c - \
+#    && tar -C /usr/local -xzf golang.tar.gz \
+#    && rm golang.tar.gz
+#
+#ENV GOPATH /go
+#ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+#RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 ## https://boringssl.googlesource.com/boringssl/+/chromium-stable
-##RUN git clone https://boringssl.googlesource.com/boringssl && \
-#RUN git clone https://github.com/google/boringssl.git && \
+#RUN git clone https://boringssl.googlesource.com/boringssl && \
 #    cd boringssl && \
 #    git reset --hard c7db3232c397aa3feb1d474d63a1c4dd674b6349 && \
 #    sed -i s/" -Werror"//g CMakeLists.txt && \
@@ -78,13 +112,12 @@ RUN pip install -r requirements.txt
 #    sudo cp build/ssl/libssl.a /opt/boringssl/lib/  && \
 #    sudo cp build/crypto/libcrypto.a /opt/boringssl/lib/
 
-
 COPY janus-gateway /janus-gateway
 WORKDIR /janus-gateway
 RUN sh autogen.sh &&  \
     PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure \
     --enable-post-processing \
-    --disable-boringssl \
+    --enable-boringssl \
     --enable-data-channels \
     --disable-rabbitmq \
     --disable-mqtt \
@@ -141,5 +174,8 @@ CMD nginx && janus
 #启动janus（不带打洞功能）
 #/opt/janus/bin/janus --configs-folder=/opt/janus/etc/janus/
 #
-
+#运行demo
+#cd /opt/janus/share/janus/demos
+#python -m SimpleHTTPServer 8080
+#使用firefox浏览器，打开网址：http://localhost:8080/
 

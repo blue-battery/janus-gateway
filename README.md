@@ -3,7 +3,7 @@ How to use
 
 1. git clone https://github.com/blue-battery/janus-gateway.git && cd janus-gateway
 2. docker-compose up --b (or make build)
-3. make run (or make run-mac)
+3. http://127.0.0.1
 
 
 Janus WebRTC Server
