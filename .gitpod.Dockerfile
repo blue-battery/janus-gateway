@@ -1,4 +1,4 @@
-#FROM gitpod/workspace-full
+ls#FROM gitpod/workspace-full
 #
 #USER gitpod
 
@@ -157,6 +157,7 @@ SHELL ["/bin/bash", "-l", "-euxo", "pipefail", "-c"]
 RUN node -v
 RUN npm -v
 
+EXPOSE 80
 
 CMD nginx && janus
 
