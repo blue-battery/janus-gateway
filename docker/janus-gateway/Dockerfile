@@ -83,7 +83,7 @@ WORKDIR /janus-gateway
 RUN sh autogen.sh &&  \
     PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure \
     --enable-post-processing \
-    --disable-boringssl \
+    --enable-boringssl \
     --enable-data-channels \
     --disable-rabbitmq \
     --disable-mqtt \
