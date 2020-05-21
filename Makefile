@@ -1,7 +1,7 @@
 TEMPLATE_NAME ?= janus-webrtc-gateway-docker
 
 build:
-	@docker build -t $(TEMPLATE_NAME) .
+	@docker build -t $(TEMPLATE_NAME) ./docker/janus-gateway
 
 build-nocache:
 	@docker build --no-cache -t $(TEMPLATE_NAME) .
