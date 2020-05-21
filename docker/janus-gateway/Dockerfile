@@ -157,25 +157,7 @@ RUN node -v
 RUN npm -v
 
 
-
 CMD nginx && janus
 
 
-#RUN ls && pwd
-
-#CMD ["node","server.js"]
-#sudo systemctl restart docker
-
-#sh autogen.sh
-#./configure --prefix=/opt/janus --disable-websockets --disable-data-channels --disable-rabbitmq --disable-mqtt
-#./configure --prefix=/opt/janus --enable-websockets --disable-plugin-lua
-#make && make install && make configs
-
-#启动janus（不带打洞功能）
-#/opt/janus/bin/janus --configs-folder=/opt/janus/etc/janus/
-#
-#运行demo
-#cd /opt/janus/share/janus/demos
-#python -m SimpleHTTPServer 8080
-#使用firefox浏览器，打开网址：http://localhost:8080/
 
