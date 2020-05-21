@@ -59,11 +59,12 @@ RUN set -x && \
     zip \
     lsof wget vim sudo rsync cron mysql-client openssh-server supervisor locate gstreamer1.0-tools mplayer valgrind certbot python3-certbot-apache dnsutils
 
-
-RUN apt-fast install -y  openssl libwebsockets-dev libconfig-dev libavutil-dev libavcodec-dev libavformat-dev
+RUN set -x && \
+    apt-fast install -y  openssl libwebsockets-dev libconfig-dev libavutil-dev libavcodec-dev libavformat-dev
 #    && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
-RUN apt-fast install -y locales curl python3-distutils libusrsctp-dev nodejs npm nginx \
+RUN set -x && \
+    apt-fast install -y locales curl python3-distutils libusrsctp-dev nodejs npm nginx \
     && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
     && python3 get-pip.py \
     && pip install -U pip \
@@ -77,7 +78,7 @@ RUN pip install -r requirements.txt
 # Boringssl build section
 # If you want to use the openssl instead of boringssl
 # RUN apt-get update -y && apt-get install -y libssl-dev
-RUN apt-fast -y update && apt-fast install -y --no-install-recommends \
+RUN set -x && apt-fast -y update && apt-fast install -y --no-install-recommends \
         g++ \
         gcc \
         libc6-dev \
@@ -117,7 +118,7 @@ WORKDIR /janus-gateway
 RUN sh autogen.sh &&  \
     PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure \
     --enable-post-processing \
-    --disable-boringssl \
+    --enable-boringssl \
     --enable-data-channels \
     --disable-rabbitmq \
     --disable-mqtt \
