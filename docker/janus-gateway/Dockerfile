@@ -82,7 +82,7 @@ RUN set -x && apt-fast -y update && apt-fast install -y --no-install-recommends 
         g++ \
         gcc \
         libc6-dev \
-        make golang-1.7.5-go
+        make
 #        curl \
 #        pkg-config \
 #    && rm -rf /var/lib/apt/lists/*
