@@ -1,3 +1,11 @@
+How to use 
+===================
+
+1. git clone https://github.com/blue-battery/janus-gateway.git && cd janus-gateway
+2. docker-compose up --b (or make build)
+3. make run (or make run-mac)
+
+
 Janus WebRTC Server
 ===================
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-brightgreen.svg)](COPYING)
