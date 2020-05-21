@@ -60,23 +60,23 @@ ENV LANG en_US.utf8
 ADD requirements.txt ./
 RUN pip install -r requirements.txt
 
-RUN apt-fast install -y git
-# https://boringssl.googlesource.com/boringssl/+/chromium-stable
-#RUN git clone https://boringssl.googlesource.com/boringssl && \
-RUN git clone https://github.com/google/boringssl.git && \
-    cd boringssl && \
-    git reset --hard c7db3232c397aa3feb1d474d63a1c4dd674b6349 && \
-    sed -i s/" -Werror"//g CMakeLists.txt && \
-    mkdir -p build  && \
-    cd build  && \
-    cmake -DCMAKE_CXX_FLAGS="-lrt" ..  && \
-    make  && \
-    cd ..  && \
-    sudo mkdir -p /opt/boringssl  && \
-    sudo cp -R include /opt/boringssl/  && \
-    sudo mkdir -p /opt/boringssl/lib  && \
-    sudo cp build/ssl/libssl.a /opt/boringssl/lib/  && \
-    sudo cp build/crypto/libcrypto.a /opt/boringssl/lib/
+#RUN apt-fast install -y git
+## https://boringssl.googlesource.com/boringssl/+/chromium-stable
+##RUN git clone https://boringssl.googlesource.com/boringssl && \
+#RUN git clone https://github.com/google/boringssl.git && \
+#    cd boringssl && \
+#    git reset --hard c7db3232c397aa3feb1d474d63a1c4dd674b6349 && \
+#    sed -i s/" -Werror"//g CMakeLists.txt && \
+#    mkdir -p build  && \
+#    cd build  && \
+#    cmake -DCMAKE_CXX_FLAGS="-lrt" ..  && \
+#    make  && \
+#    cd ..  && \
+#    sudo mkdir -p /opt/boringssl  && \
+#    sudo cp -R include /opt/boringssl/  && \
+#    sudo mkdir -p /opt/boringssl/lib  && \
+#    sudo cp build/ssl/libssl.a /opt/boringssl/lib/  && \
+#    sudo cp build/crypto/libcrypto.a /opt/boringssl/lib/
 
 
 COPY janus-gateway /janus-gateway
@@ -84,7 +84,7 @@ WORKDIR /janus-gateway
 RUN sh autogen.sh &&  \
     PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure \
     --enable-post-processing \
-    --enable-boringssl \
+    --disable-boringssl \
     --enable-data-channels \
     --disable-rabbitmq \
     --disable-mqtt \
