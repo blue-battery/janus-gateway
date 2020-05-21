@@ -3,4 +3,4 @@ tasks:
 image:
   file: .gitpod.Dockerfile
 ports:
-  - port: 80
+  - port: 8080
