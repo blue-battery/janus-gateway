@@ -62,7 +62,7 @@ RUN pip install -r requirements.txt
 
 RUN apt-fast install -y git
 # https://boringssl.googlesource.com/boringssl/+/chromium-stable
-RUN git clone https://boringssl.googlesource.com/boringssl && \
+RUN git clone https://boringssl.googlesource.com/boringssl.git && \
     cd boringssl && \
     git reset --hard c7db3232c397aa3feb1d474d63a1c4dd674b6349 && \
     sed -i s/" -Werror"//g CMakeLists.txt && \
