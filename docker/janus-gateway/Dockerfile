@@ -33,7 +33,8 @@ RUN set -x \
     && echo "alias apt-get='apt-fast'" >> ~/.bashrc \
     && echo "alias aptitude='apt-fast'" >> ~/.bashrc
 #project rely
-RUN apt-fast install -y libmicrohttpd-dev \
+#RUN rm -rf /var/lib/apt/lists/*
+RUN apt-fast -y update && apt-fast install -y libmicrohttpd-dev \
     libjansson-dev \
     libnice-dev \
     libssl-dev \
@@ -42,12 +43,23 @@ RUN apt-fast install -y libmicrohttpd-dev \
     libglib2.0-dev \
     libopus-dev \
     libogg-dev \
+    libini-config-dev \
+    libcollection-dev \
+    libconfig-dev \
     pkg-config \
     gengetopt \
     libtool \
-    automake
+    automake \
+    build-essential \
+    subversion \
+    git \
+    cmake \
+    unzip \
+    zip \
+    lsof wget vim sudo rsync cron mysql-client openssh-server supervisor locate gstreamer1.0-tools mplayer valgrind certbot python3-certbot-apache dnsutils
 
-RUN apt-fast install -y vim cmake openssl libwebsockets-dev libconfig-dev libavutil-dev libavcodec-dev libavformat-dev
+
+RUN apt-fast install -y vim  openssl libwebsockets-dev  libavutil-dev libavcodec-dev libavformat-dev
 #    && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
 RUN apt-fast install -y locales curl python3-distutils libusrsctp-dev nodejs npm nginx \
