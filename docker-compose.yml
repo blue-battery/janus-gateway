@@ -1,8 +1,9 @@
 version: '3'
 services:
   janus-gateway:
-    container_name: janus-gateway
+    container_name: janus
     tty: true
+    image: janus-gateway
     build:
       context: ./
       dockerfile: ./docker/janus-gateway/Dockerfile

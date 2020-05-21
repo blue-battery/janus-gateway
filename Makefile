@@ -1,4 +1,4 @@
-TEMPLATE_NAME ?= janus-webrtc-gateway-docker
+TEMPLATE_NAME ?= janus-gateway
 
 build:
 	@docker build -t $(TEMPLATE_NAME) ./docker/janus-gateway
@@ -16,7 +16,7 @@ run:
 	@docker run --net=host --name="janus" -it -t $(TEMPLATE_NAME)
 
 run-mac:
-	@docker run -p 80:80 -p 8088:8088 -p 8188:8188 --name="janus-by-make" -it -t $(TEMPLATE_NAME)
+	@docker run -p 80:80 -p 8088:8088 -p 8188:8188 --name="janus" -it -t $(TEMPLATE_NAME)
 
 run-hide:
 	@docker run --net=host --name="janus" -it -t $(TEMPLATE_NAME) >> /dev/null
