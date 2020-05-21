@@ -157,7 +157,6 @@ SHELL ["/bin/bash", "-l", "-euxo", "pipefail", "-c"]
 RUN node -v
 RUN npm -v
 
-EXPOSE 80
 
 CMD nginx && janus
 
