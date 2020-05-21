@@ -60,6 +60,7 @@ ENV LANG en_US.utf8
 ADD requirements.txt ./
 RUN pip install -r requirements.txt
 
+RUN apt-fast install -y git
 # https://boringssl.googlesource.com/boringssl/+/chromium-stable
 RUN git clone https://boringssl.googlesource.com/boringssl && \
     cd boringssl && \
