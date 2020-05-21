@@ -123,8 +123,5 @@ CMD nginx && janus
 #启动janus（不带打洞功能）
 #/opt/janus/bin/janus --configs-folder=/opt/janus/etc/janus/
 #
-#运行demo
-#cd /opt/janus/share/janus/demos
-#python -m SimpleHTTPServer 8080
-#使用firefox浏览器，打开网址：http://localhost:8080/
+
 
