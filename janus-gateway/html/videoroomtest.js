@@ -80,6 +80,11 @@ $(document).ready(function() {
 			janus = new Janus(
 				{
 					server: server,
+					iceServers :[ {url: 'turn:domain:3478?transport=udp',
+							credential: 'turnpassword',
+							username: 'turnuser'
+					}],
+					iceServers : [{url:'stun:stun.voip.eutelia.it'}],
 					success: function() {
 						// Attach to VideoRoom plugin
 						janus.attach(

@@ -32,6 +32,7 @@ RUN set -x \
 #    && aptitude safe-upgrade \
     && echo "alias apt-get='apt-fast'" >> ~/.bashrc \
     && echo "alias aptitude='apt-fast'" >> ~/.bashrc
+
 #project rely
 #RUN rm -rf /var/lib/apt/lists/*
 RUN set -x && \
@@ -82,8 +83,7 @@ RUN set -x && apt-fast -y update && apt-fast install -y --no-install-recommends 
         g++ \
         gcc \
         libc6-dev \
-        make
-#        curl \
+        make libcurl4-openssl-dev ##libcurl4-nss-dev libcurl4-openssl-dev
 #        pkg-config \
 #    && rm -rf /var/lib/apt/lists/*
 ENV GOLANG_VERSION 1.7.5
@@ -139,7 +139,7 @@ RUN sh autogen.sh &&  \
 
 #COPY nginx.conf /usr/local/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/nginx.conf
-
+#COPY conf/*.cfg /opt/janus/etc/janus/
 
 #ENV NVM_VERSION v0.35.3
 #ENV NODE_VERSION v10.16.0
@@ -161,7 +161,7 @@ RUN node -v
 RUN npm -v
 
 
-CMD nginx && janus
+CMD nginx && janus --stun-server=stun.l.google.com:19302
 
-
-
+#turn server
+#coturn

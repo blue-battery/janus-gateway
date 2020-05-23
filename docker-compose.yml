@@ -9,6 +9,7 @@ services:
       dockerfile: ./docker/janus-gateway/Dockerfile
     ports:
       - "80:80"
+      - "7088:7088"
       - "8088:8088"
       - "8188:8188"
     volumes:
